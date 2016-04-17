@@ -18,10 +18,11 @@
     method: PUT
     HEADER_Content-Type: "application/json"
     HEADER_Accept: "application/json"
+    HEADER_Authorization: "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
     return_content: yes
     validate_certs: no
     status_code: [200, 201]
-    body: "{{ lookup ('file', item )}}"  
+    body: "{{ lookup ('file', item )}}"
   register: result
   with_fileglob:
     - files/nginx.json
@@ -29,10 +30,9 @@
 
 - name: start specified services
   uri:
-    url: "http://127.0.0.1:8080/v2/apps/test/sleep120/restart?force=true"
-    method: POST
+    url: "http://127.0.0.1:8080/v2/apps/{{ item }}"
+    method: GET
     HEADER_Authorization: "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
     validate_certs: no
   with_items:
-    - test/sleep60
-    - test/sleep120
+    - nginx
