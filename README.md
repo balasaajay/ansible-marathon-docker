@@ -1,4 +1,8 @@
 ## ansible-marathon
-To deploy containers using ansible and Marathon API.
+Sample program to deploy nginx container using ansible and Marathon API.
 
-This application pulls docker nginx image from docker hub <https://hub.docker.com/_/nginx/> and starts nginx container.
+This application pulls latest docker nginx image from docker hub: <https://hub.docker.com/_/nginx/> and **starts nginx container**.
+
+- Command to check **ansible syntax**:  ``ansible-playbook main.yml --syntax-check``
+
+- Command to **execute playbook**:  ``ansible-playbook -v main.yml -i inventory``

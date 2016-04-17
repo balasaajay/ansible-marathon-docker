@@ -1,6 +1,6 @@
 ---
 
-- hosts: hello
+- hosts: marathon_control_node
   remote_user: root
   vars:
       update: true
