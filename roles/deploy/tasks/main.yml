@@ -1,0 +1,38 @@
+---
+
+- name: echo hello
+  command: echo "Hello Ajay!"
+  register: log
+- debug: var=log.stdout_lines
+
+- command: users
+  register: log1
+- debug: var=log1.stdout_lines
+
+- name: install httplib2
+  pip: name=httplib2 extra_args="--user"
+
+- name: Register all configs
+  uri:
+    url: "http://127.0.0.1:8080/v2/apps/nginx"
+    method: PUT
+    HEADER_Content-Type: "application/json"
+    HEADER_Accept: "application/json"
+    return_content: yes
+    validate_certs: no
+    status_code: [200, 201]
+    body: "{{ lookup ('file', item )}}"  
+  register: result
+  with_fileglob:
+    - files/nginx.json
+  when: update
+
+- name: start specified services
+  uri:
+    url: "http://127.0.0.1:8080/v2/apps/test/sleep120/restart?force=true"
+    method: POST
+    HEADER_Authorization: "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+    validate_certs: no
+  with_items:
+    - test/sleep60
+    - test/sleep120
