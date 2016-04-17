@@ -1,5 +1,5 @@
 ## ansible-marathon
-Sample program to deploy nginx container using ansible and Marathon API.
+Sample program to deploy docker nginx container using ansible and Marathon API.
 
 This application pulls latest docker nginx image from docker hub: <https://hub.docker.com/_/nginx/> and **starts nginx container**.
 
