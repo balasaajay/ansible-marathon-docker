@@ -1,8 +1,0 @@
-[{
-  "id": "/test/sleep120",
-  "cmd": "sleep 120",
-  "cpus": 0.3,
-  "instances": 1,
-  "mem": 9
-}]
-
