@@ -5,4 +5,5 @@
   vars:
       update: true
   roles:
-     - deploy
+     - {name: marathon-test, tags: test-restart}
+     - {name: nginx, tags: nginx}

@@ -1,0 +1,39 @@
+---
+
+- name: get the list of users
+  command: users
+  register: log1
+- debug: var=log1.stdout_lines
+
+- name: install httplib2
+  pip: name=httplib2 extra_args="--user"
+
+- name: restart specified services
+  uri:
+    url: "http://127.0.0.1:8080/v2/apps/{{ item }}/restart"
+    method: POST
+    HEADER_Authorization: "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+    validate_certs: no
+  with_items:
+    - test/sleep120
+    - test/sleep60
+
+- name: get Status of specified services
+  uri:
+    url: "http://127.0.0.1:8080/v2/apps/{{ item }}"
+    method: GET
+    HEADER_Authorization: "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+    validate_certs: no
+  with_items:
+    - test/sleep120
+    - test/sleep60
+
+- name: restart specified services
+  uri:
+    url: "http://127.0.0.1:8080/v2/apps/{{ item }}/versions"
+    method: GET
+    HEADER_Authorization: "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+    validate_certs: no
+  with_items:
+    - test/sleep120
+    - test/sleep60
