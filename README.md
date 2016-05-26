@@ -1,3 +1,5 @@
+[![Build Status](https://drone.io/github.com/balasaajay/ansible-marathon-docker/status.png)](https://drone.io/github.com/balasaajay/ansible-marathon-docker/latest)
+
 ## ansible-marathon
 Sample program to deploy docker nginx container, restart existing container and to get the status of running contianers using ansible and Marathon API.
 
