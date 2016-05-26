@@ -12,7 +12,7 @@
 - name: install httplib2
   pip: name=httplib2 extra_args="--user"
 
-- name: Register all configs
+- name: Register and start specified services
   uri:
     url: "http://127.0.0.1:8080/v2/apps/nginx"
     method: PUT
@@ -28,7 +28,7 @@
     - files/nginx.json
   when: update
 
-- name: start specified services
+- name: Get the status of service
   uri:
     url: "http://127.0.0.1:8080/v2/apps/{{ item }}"
     method: GET
