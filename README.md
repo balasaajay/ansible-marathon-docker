@@ -1,4 +1,6 @@
 [![Build Status](https://drone.io/github.com/balasaajay/ansible-marathon-docker/status.png)](https://drone.io/github.com/balasaajay/ansible-marathon-docker/latest)
+[![Code Climate](https://codeclimate.com/repos/57467e1a5cb67700720041f0/badges/33670da20f815969d9dc/gpa.svg)](https://codeclimate.com/repos/57467e1a5cb67700720041f0/feed)
+[![Issue Count](https://codeclimate.com/repos/57467e1a5cb67700720041f0/badges/33670da20f815969d9dc/issue_count.svg)](https://codeclimate.com/repos/57467e1a5cb67700720041f0/feed)
 
 ## ansible-marathon
 Sample program to deploy docker nginx container, restart existing container and to get the status of running contianers using ansible and Marathon API.
